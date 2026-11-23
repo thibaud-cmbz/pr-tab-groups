@@ -26,5 +26,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   startup delay and periodic refresh.
 - English and French translations.
 
-[Unreleased]: https://github.com/OWNER/pr-tab-groups/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/OWNER/pr-tab-groups/releases/tag/v1.0.0
+[Unreleased]: https://github.com/thibaud-cmbz/pr-tab-groups/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/thibaud-cmbz/pr-tab-groups/releases/tag/v1.0.0
