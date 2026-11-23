@@ -19,21 +19,78 @@
     "message": "PR Tab Groups — $ERROR$",
     "description": "Toolbar button tooltip after a failed refresh.",
     "placeholders": {
-      "error": { "content": "$1", "example": "The GitHub token is invalid or expired." }
+      "error": {
+        "content": "$1",
+        "example": "The GitHub token is invalid or expired."
+      }
     }
   },
   "groupMine": {
     "message": "My PRs ($COUNT$)",
     "description": "Title of the tab group holding pull requests authored by the user.",
     "placeholders": {
-      "count": { "content": "$1", "example": "4" }
+      "count": {
+        "content": "$1",
+        "example": "4"
+      }
     }
   },
   "groupReview": {
     "message": "To review ($COUNT$)",
     "description": "Title of the tab group holding pull requests awaiting the user's review.",
     "placeholders": {
-      "count": { "content": "$1", "example": "2" }
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
     }
+  },
+  "errorNoToken": {
+    "message": "No GitHub token configured. Open the extension options to add one."
+  },
+  "errorUnauthorized": {
+    "message": "The GitHub token is invalid or expired."
+  },
+  "errorForbidden": {
+    "message": "GitHub refused the request. Check the token permissions."
+  },
+  "errorSsoRequired": {
+    "message": "The token must be authorized for the organization's SAML SSO."
+  },
+  "errorRateLimited": {
+    "message": "GitHub rate limit reached. Try again later."
+  },
+  "errorRateLimitedUntil": {
+    "message": "GitHub rate limit reached. Try again after $TIME$.",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "14:05"
+      }
+    }
+  },
+  "errorInvalidQuery": {
+    "message": "GitHub rejected the search. Check the organization name."
+  },
+  "errorTimeout": {
+    "message": "GitHub did not respond in time."
+  },
+  "errorNetwork": {
+    "message": "Could not reach GitHub. Check your network connection."
+  },
+  "errorInvalidResponse": {
+    "message": "GitHub returned an unexpected response."
+  },
+  "errorHttp": {
+    "message": "GitHub returned an error (HTTP $STATUS$).",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "502"
+      }
+    }
+  },
+  "errorUnexpected": {
+    "message": "Unexpected error. See the browser console for details."
   }
 }

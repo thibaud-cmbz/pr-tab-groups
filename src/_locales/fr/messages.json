@@ -14,19 +14,71 @@
   "actionTitleError": {
     "message": "PR Tab Groups — $ERROR$",
     "placeholders": {
-      "error": { "content": "$1" }
+      "error": {
+        "content": "$1"
+      }
     }
   },
   "groupMine": {
     "message": "Mes PR ($COUNT$)",
     "placeholders": {
-      "count": { "content": "$1" }
+      "count": {
+        "content": "$1"
+      }
     }
   },
   "groupReview": {
     "message": "À reviewer ($COUNT$)",
     "placeholders": {
-      "count": { "content": "$1" }
+      "count": {
+        "content": "$1"
+      }
     }
+  },
+  "errorNoToken": {
+    "message": "Aucun token GitHub configuré. Ouvrez les options de l’extension pour en ajouter un."
+  },
+  "errorUnauthorized": {
+    "message": "Le token GitHub est invalide ou a expiré."
+  },
+  "errorForbidden": {
+    "message": "GitHub a refusé la requête. Vérifiez les permissions du token."
+  },
+  "errorSsoRequired": {
+    "message": "Le token doit être autorisé pour le SSO SAML de l’organisation."
+  },
+  "errorRateLimited": {
+    "message": "Limite de requêtes GitHub atteinte. Réessayez plus tard."
+  },
+  "errorRateLimitedUntil": {
+    "message": "Limite de requêtes GitHub atteinte. Réessayez après $TIME$.",
+    "placeholders": {
+      "time": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorInvalidQuery": {
+    "message": "GitHub a rejeté la recherche. Vérifiez le nom de l’organisation."
+  },
+  "errorTimeout": {
+    "message": "GitHub n’a pas répondu à temps."
+  },
+  "errorNetwork": {
+    "message": "Impossible de joindre GitHub. Vérifiez votre connexion."
+  },
+  "errorInvalidResponse": {
+    "message": "GitHub a renvoyé une réponse inattendue."
+  },
+  "errorHttp": {
+    "message": "GitHub a renvoyé une erreur (HTTP $STATUS$).",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorUnexpected": {
+    "message": "Erreur inattendue. Consultez la console du navigateur."
   }
 }
