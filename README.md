@@ -6,11 +6,7 @@ A Firefox extension that opens your GitHub pull requests in collapsed tab groups
 - **To review (n)**: open pull requests where your review is requested, directly or through one of your teams.
 - An optional **fixed page** (a dashboard, a board…), opened and pinned at startup if it is not already open.
 
-<!-- Screenshots: add them to docs/screenshots/ and reference them here. -->
-
-| Tab groups                            | Options                                |
-| ------------------------------------- | -------------------------------------- |
-| _TODO: `docs/screenshots/groups.png`_ | _TODO: `docs/screenshots/options.png`_ |
+![The "My PRs (9)" and "To review (1)" tab groups in the Firefox tab bar](img/image.png)
 
 ## Features
 
