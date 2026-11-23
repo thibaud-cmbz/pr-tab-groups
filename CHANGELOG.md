@@ -7,10 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-
-- Sort tabs by repository within each group, then by most recent update.
-
 ## [1.0.0]
 
 ### Added
@@ -21,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unloaded (discarded) tabs, so pages only load when opened.
 - Session-restore-safe identification of managed tabs. Refreshes reuse tabs
   still listed and close the stale ones.
+- Tabs sorted by repository within each group, then by most recent update.
 - Toolbar button for manual refresh, with loading and error badges.
 - Options page: token, organization, review filter, fixed page, pinning,
   startup delay and periodic refresh.
