@@ -7,6 +7,8 @@ import { describeError, MissingTokenError } from '../lib/errors.js';
 import { createGitHubClient } from '../lib/github.js';
 import { createBadge } from './badge.js';
 import { loadSettings, refresh } from './refresh.js';
+import { REFRESH_ALARM, syncPeriodicRefresh } from './schedule.js';
+import { SETTINGS_KEY } from '../lib/settings.js';
 
 const badge = createBadge(browser);
 
@@ -55,10 +57,20 @@ function requestRefresh() {
 browser.runtime.onStartup.addListener(async () => {
   const { startupDelaySeconds } = await loadSettings(browser);
   setTimeout(requestRefresh, startupDelaySeconds * 1000);
+  await syncPeriodicRefresh(browser);
 });
 
 browser.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === 'install') void browser.runtime.openOptionsPage();
+  void syncPeriodicRefresh(browser);
+});
+
+browser.storage.onChanged.addListener((changes, area) => {
+  if (area === 'local' && SETTINGS_KEY in changes) void syncPeriodicRefresh(browser);
+});
+
+browser.alarms.onAlarm.addListener(({ name }) => {
+  if (name === REFRESH_ALARM) void requestRefresh();
 });
 
 browser.action.onClicked.addListener(() => {

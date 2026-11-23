@@ -164,5 +164,11 @@
   },
   "optionsErrorPinnedUrl": {
     "message": "The fixed page must be an http(s) URL."
+  },
+  "optionsRefreshIntervalLabel": {
+    "message": "Refresh automatically every (minutes)"
+  },
+  "optionsRefreshIntervalHelp": {
+    "message": "0 disables the periodic refresh. Minimum 5 minutes. Tabs still listed are kept as they are."
   }
 }

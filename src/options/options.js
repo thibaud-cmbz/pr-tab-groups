@@ -25,6 +25,7 @@ const reviewOrgOnlyInput = /** @type {HTMLInputElement} */ (element('reviewOrgOn
 const pinnedUrlInput = /** @type {HTMLInputElement} */ (element('pinnedUrl'));
 const pinTabInput = /** @type {HTMLInputElement} */ (element('pinTab'));
 const startupDelayInput = /** @type {HTMLInputElement} */ (element('startupDelaySeconds'));
+const refreshIntervalInput = /** @type {HTMLInputElement} */ (element('refreshIntervalMinutes'));
 const forgetTokenButton = /** @type {HTMLButtonElement} */ (element('forget-token'));
 const saveAndRunButton = /** @type {HTMLButtonElement} */ (element('save-and-run'));
 const errorsList = /** @type {HTMLUListElement} */ (element('errors'));
@@ -78,6 +79,7 @@ async function load() {
   pinnedUrlInput.value = settings.pinnedUrl;
   pinTabInput.checked = settings.pinTab;
   startupDelayInput.value = String(settings.startupDelaySeconds);
+  refreshIntervalInput.value = String(settings.refreshIntervalMinutes);
   updateTokenField();
 }
 
@@ -93,6 +95,7 @@ async function save() {
     pinnedUrl: pinnedUrlInput.value,
     pinTab: pinTabInput.checked,
     startupDelaySeconds: startupDelayInput.value,
+    refreshIntervalMinutes: refreshIntervalInput.value,
   });
 
   const errors = validateSettings(settings);
@@ -105,7 +108,9 @@ async function save() {
   await storage.local.set({ [SETTINGS_KEY]: settings });
   storedToken = settings.token;
   updateTokenField();
+  // Show the values as normalized (clamped) before saving.
   startupDelayInput.value = String(settings.startupDelaySeconds);
+  refreshIntervalInput.value = String(settings.refreshIntervalMinutes);
   setStatus(i18n.getMessage('optionsSaved'), 'ok');
   return settings;
 }

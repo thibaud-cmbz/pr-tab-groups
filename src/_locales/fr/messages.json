@@ -152,5 +152,11 @@
   },
   "optionsErrorPinnedUrl": {
     "message": "La page fixe doit être une URL http(s)."
+  },
+  "optionsRefreshIntervalLabel": {
+    "message": "Rafraîchir automatiquement toutes les (minutes)"
+  },
+  "optionsRefreshIntervalHelp": {
+    "message": "0 désactive le rafraîchissement périodique. Minimum 5 minutes. Les onglets toujours listés sont conservés tels quels."
   }
 }
