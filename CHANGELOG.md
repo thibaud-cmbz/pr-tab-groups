@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Sort tabs by repository within each group, then by most recent update.
+
 ## [1.0.0]
 
 ### Added

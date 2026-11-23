@@ -5,17 +5,20 @@ import { createBrowserMock } from './browser-mock.js';
 
 const pr = (/** @type {number} */ n) => `https://github.com/acme/api/pull/${n}`;
 
-/** @param {number[]} numbers */
-const items = (numbers) =>
-  numbers.map((n) => ({
-    html_url: pr(n),
-    title: `PR ${n}`,
-    number: n,
-    repository_url: 'https://api.github.com/repos/acme/api',
-    updated_at: '2026-01-01T00:00:00Z',
-  }));
+/** @param {Array<number | string>} prs PR numbers in acme/api, or "repo#number" */
+const items = (prs) =>
+  prs.map((value) => {
+    const [repo, n] = typeof value === 'number' ? ['api', value] : value.split('#');
+    return {
+      html_url: `https://github.com/acme/${repo}/pull/${n}`,
+      title: `PR ${n}`,
+      number: Number(n),
+      repository_url: `https://api.github.com/repos/acme/${repo}`,
+      updated_at: '2026-01-01T00:00:00Z',
+    };
+  });
 
-/** @param {{ mine?: number[], review?: number[] }} results */
+/** @param {{ mine?: Array<number | string>, review?: Array<number | string> }} results */
 function fakeGitHub({ mine = [], review = [] } = {}) {
   const client = {
     getLogin: vi.fn(async () => 'octocat'),
@@ -82,6 +85,23 @@ describe('refresh', () => {
     expect(env.mock.tabs.create).toHaveBeenCalledWith(
       expect.objectContaining({ discarded: true, active: false, windowId: 1 }),
     );
+  });
+
+  it('orders tabs by repository inside a group, keeping reused tabs in place', async () => {
+    const env = createBrowserMock({ settings: { token: 't' } });
+    await refresh({ browser: env.browser, ...fakeGitHub({ mine: ['web#1', 'api#2'] }) });
+    const reusedId = env.tabs.find((t) => t.url.endsWith('/web/pull/1'))?.id;
+
+    // A new PR in a repository sorted before "web" must end up before the reused tab.
+    await refresh({
+      browser: env.browser,
+      ...fakeGitHub({ mine: ['web#1', 'api#2', 'core#3', 'api#4'] }),
+    });
+
+    const [groupId] = env.groups.keys();
+    const titles = env.tabsInGroup(groupId).map((t) => t.title ?? t.url);
+    expect(titles).toEqual(['api#2 · PR 2', 'api#4 · PR 4', 'core#3 · PR 3', 'web#1 · PR 1']);
+    expect(env.tabsInGroup(groupId).at(-1)?.id).toBe(reusedId);
   });
 
   it('builds search queries from the token owner and settings', async () => {

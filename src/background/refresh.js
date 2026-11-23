@@ -95,6 +95,11 @@ async function syncGroup(api, { kind, titleKey, color, tabs }, windowId) {
   // Reused tabs may come from the other group: always (re)write the marker.
   await Promise.all(tabIds.map((id) => api.sessions.setTabValue(id, MANAGED_TAB_KEY, kind)));
 
+  // Put the tabs in display order at the end of the window before grouping:
+  // reused tabs keep their old position otherwise. With a windowId, tabs.move
+  // keeps the order of tabIds.
+  if (windowId !== undefined) await api.tabs.move(tabIds, { windowId, index: -1 });
+
   const groupId = await api.tabs.group({
     tabIds,
     createProperties: windowId === undefined ? undefined : { windowId },

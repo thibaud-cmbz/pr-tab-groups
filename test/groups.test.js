@@ -10,6 +10,7 @@ import {
 const tab = (/** @type {number} */ n) => ({
   url: `https://github.com/o/r/pull/${n}`,
   title: `#${n}`,
+  repository: 'o/r',
 });
 
 describe('planGroups', () => {

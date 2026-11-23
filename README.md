@@ -16,6 +16,7 @@ A Firefox extension that opens your GitHub pull requests in collapsed tab groups
 
 - Runs at browser startup, after a configurable delay. The toolbar button refreshes on demand.
 - Each group's title includes its count (`My PRs (4)`). Each group has its own color and starts collapsed. Empty groups are not created.
+- Within each group, tabs are sorted by repository (alphabetically), then by most recent update. Each tab title starts with its repository and number, for example `api#12 · Fix login`.
 - Tabs are created **unloaded**: a page loads only when you open it, so startup stays fast even with 30 pull requests.
 - **Idempotent**:
   - Every tab the extension creates carries a marker stored with the session (`sessions.setTabValue`), which survives session restore. Group titles and IDs are never used to identify managed tabs.

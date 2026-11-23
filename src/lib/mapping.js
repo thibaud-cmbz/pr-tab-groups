@@ -10,33 +10,29 @@ const ALLOWED_ORIGIN = 'https://github.com';
  * @typedef {object} PullRequestTab
  * @property {string} url
  * @property {string} title Title shown on the unloaded (discarded) tab.
+ * @property {string} repository "owner/repo", used to sort tabs by repository.
  */
 
-/**
- * @param {string} repositoryUrl e.g. https://api.github.com/repos/owner/repo
- * @returns {string} Repository name, or "" when it cannot be determined.
- */
-function repositoryName(repositoryUrl) {
-  const segments = String(repositoryUrl ?? '').split('/');
-  return segments.at(-1) ?? '';
-}
+const PULL_REQUEST_PATH = /^\/([^/]+)\/([^/]+)\/pull\/(\d+)$/;
 
 /**
  * @param {string} value
- * @returns {boolean}
+ * @returns {{ owner: string, repo: string } | null} Null unless a github.com pull request URL.
  */
-function isPullRequestUrl(value) {
+function parsePullRequestUrl(value) {
   try {
     const url = new URL(value);
-    return url.origin === ALLOWED_ORIGIN && /^\/[^/]+\/[^/]+\/pull\/\d+$/.test(url.pathname);
+    const match = url.origin === ALLOWED_ORIGIN ? PULL_REQUEST_PATH.exec(url.pathname) : null;
+    return match ? { owner: match[1], repo: match[2] } : null;
   } catch {
-    return false;
+    return null;
   }
 }
 
 /**
- * Converts search results to tabs, keeping the API order, dropping duplicates
- * and anything that is not a github.com pull request URL.
+ * Converts search results to tabs in display order: grouped by repository
+ * (alphabetical, case-insensitive), keeping the API order within a repository.
+ * Duplicates and anything that is not a github.com pull request URL are dropped.
  *
  * @param {ReadonlyArray<import('./github.js').SearchItem>} items
  * @returns {PullRequestTab[]}
@@ -48,12 +44,19 @@ export function toPullRequestTabs(items) {
 
   for (const item of items) {
     const url = item?.html_url;
-    if (typeof url !== 'string' || !isPullRequestUrl(url) || seen.has(url)) continue;
+    const parsed = typeof url === 'string' ? parsePullRequestUrl(url) : null;
+    if (!parsed || seen.has(url)) continue;
     seen.add(url);
 
-    const repo = repositoryName(item.repository_url);
-    const prefix = repo ? `${repo}#${item.number}` : `#${item.number}`;
-    tabs.push({ url, title: `${prefix} · ${String(item.title ?? '').trim()}` });
+    tabs.push({
+      url,
+      title: `${parsed.repo}#${item.number} · ${String(item.title ?? '').trim()}`,
+      repository: `${parsed.owner}/${parsed.repo}`,
+    });
   }
-  return tabs;
+
+  // Array.prototype.sort is stable: the API order is kept within a repository.
+  return tabs.sort((a, b) =>
+    a.repository.localeCompare(b.repository, 'en', { sensitivity: 'base' }),
+  );
 }

@@ -86,6 +86,14 @@ export function createBrowserMock({ settings = {}, tabs = [] } = {}) {
         for (const id of ids) state.splice(state.indexOf(findTab(id)), 1);
         pruneGroups();
       }),
+      move: vi.fn(
+        async (/** @type {number[]} */ ids, /** @type {{ index: number }} */ { index }) => {
+          const moved = ids.map(findTab);
+          for (const tab of moved) state.splice(state.indexOf(tab), 1);
+          state.splice(index === -1 ? state.length : index, 0, ...moved);
+          return moved.map((t) => ({ ...t }));
+        },
+      ),
       group: vi.fn(async (/** @type {{ tabIds: number[], groupId?: number }} */ options) => {
         const groupId = options.groupId ?? nextGroupId++;
         groups.set(groupId, groups.get(groupId) ?? {});
