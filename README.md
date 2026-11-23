@@ -117,12 +117,15 @@ Requires Node.js 22 (`nvm use`).
 ```sh
 npm install
 npm start          # launch Firefox with the extension, reloads on change
+npm run start:clean  # same, with a fresh development profile
 npm test           # unit tests (Vitest)
 npm run lint       # ESLint + Prettier check + web-ext lint
 npm run typecheck  # JSDoc type checking with tsc
 npm run format     # Prettier + ESLint autofix
 npm run build      # package to web-ext-artifacts/
 ```
+
+`npm start` runs Firefox with a development profile stored in `.web-ext-profile/` (git-ignored), so the token and settings survive between runs. This also keeps it working with the Ubuntu **snap** of Firefox: the snap has a private `/tmp` and cannot read the temporary profile web-ext creates there by default ("Your Firefox profile cannot be loaded"). Delete the folder, or run `npm run start:clean`, to start over.
 
 There is no build step. The extension is plain JavaScript loaded as native ES modules from `src/`. Types are JSDoc annotations checked by `tsc --noEmit` (`// @ts-check`).
 
@@ -150,7 +153,7 @@ test/              Vitest unit tests and a minimal in-memory browser mock
 
 ### Testing the startup behavior
 
-`npm start` uses a temporary profile, and `runtime.onStartup` does not fire for a temporary add-on. To test a real startup:
+`npm start` loads the extension as a temporary add-on, and `runtime.onStartup` does not fire for a temporary add-on. To test a real startup:
 
 - install the signed `.xpi`, open a few pull requests, restart Firefox, then check that the groups are replaced and not duplicated;
 - or use Firefox Developer Edition or Nightly with `xpinstall.signatures.required` set to `false`, and install the unsigned package from `npm run build`.

@@ -4,7 +4,7 @@ import prettier from 'eslint-config-prettier';
 import globals from 'globals';
 
 export default [
-  { ignores: ['node_modules/', 'web-ext-artifacts/', 'coverage/'] },
+  { ignores: ['node_modules/', 'web-ext-artifacts/', '.web-ext-profile/', 'coverage/'] },
   js.configs.recommended,
   {
     files: ['src/**/*.js'],

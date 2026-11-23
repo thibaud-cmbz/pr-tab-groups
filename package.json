@@ -18,7 +18,8 @@
     "test:watch": "vitest",
     "start": "web-ext run",
     "build": "web-ext build",
-    "sign": "web-ext sign --channel=unlisted"
+    "sign": "web-ext sign --channel=unlisted",
+    "start:clean": "rm -rf .web-ext-profile && web-ext run"
   },
   "webExt": {
     "sourceDir": "src",
@@ -27,6 +28,9 @@
       "overwriteDest": true
     },
     "run": {
+      "firefoxProfile": ".web-ext-profile",
+      "profileCreateIfMissing": true,
+      "keepProfileChanges": true,
       "startUrl": [
         "about:debugging#/runtime/this-firefox"
       ]
