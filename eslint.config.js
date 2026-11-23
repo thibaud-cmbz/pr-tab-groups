@@ -15,7 +15,7 @@ export default [
     },
   },
   {
-    files: ['test/**/*.js', '*.config.js'],
+    files: ['test/**/*.js', '*.config.js', '*.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
