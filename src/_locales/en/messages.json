@@ -92,5 +92,77 @@
   },
   "errorUnexpected": {
     "message": "Unexpected error. See the browser console for details."
+  },
+  "optionsTitle": {
+    "message": "PR Tab Groups — Options"
+  },
+  "optionsSectionGitHub": {
+    "message": "GitHub"
+  },
+  "optionsTokenLabel": {
+    "message": "Personal access token"
+  },
+  "optionsTokenPlaceholder": {
+    "message": "Paste your token"
+  },
+  "optionsTokenSaved": {
+    "message": "Token saved — leave empty to keep it"
+  },
+  "optionsForgetToken": {
+    "message": "Forget"
+  },
+  "optionsTokenHelp": {
+    "message": "Stored locally, only sent to api.github.com. Read-only access to pull requests is enough:"
+  },
+  "optionsTokenLinkFineGrained": {
+    "message": "create a fine-grained token"
+  },
+  "optionsTokenLinkClassic": {
+    "message": "create a classic token"
+  },
+  "optionsOrgLabel": {
+    "message": "Organization"
+  },
+  "optionsOrgHelp": {
+    "message": "Your pull requests are limited to this organization. Leave empty to include all of them."
+  },
+  "optionsReviewOrgOnlyLabel": {
+    "message": "Also limit review requests to this organization"
+  },
+  "optionsSectionStartup": {
+    "message": "Startup"
+  },
+  "optionsPinnedUrlLabel": {
+    "message": "Fixed page"
+  },
+  "optionsPinnedUrlHelp": {
+    "message": "Opened at startup unless already open. Leave empty to disable."
+  },
+  "optionsPinTabLabel": {
+    "message": "Pin the fixed page"
+  },
+  "optionsStartupDelayLabel": {
+    "message": "Delay before loading at startup (seconds, 0–30)"
+  },
+  "optionsSave": {
+    "message": "Save"
+  },
+  "optionsSaveAndRun": {
+    "message": "Save and run"
+  },
+  "optionsSaved": {
+    "message": "Options saved."
+  },
+  "optionsRunning": {
+    "message": "Loading pull requests…"
+  },
+  "optionsDone": {
+    "message": "Tab groups updated."
+  },
+  "optionsErrorOrg": {
+    "message": "The organization name is not a valid GitHub login."
+  },
+  "optionsErrorPinnedUrl": {
+    "message": "The fixed page must be an http(s) URL."
   }
 }

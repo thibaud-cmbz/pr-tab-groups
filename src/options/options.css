@@ -1,0 +1,161 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f9fafb;
+  --fg: #111827;
+  --muted: #6b7280;
+  --border: #d1d5db;
+  --accent: #0f766e;
+  --accent-fg: #ffffff;
+  --error: #b91c1c;
+  --ok: #047857;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1b22;
+    --fg: #f3f4f6;
+    --muted: #9ca3af;
+    --border: #4b5563;
+    --accent: #2dd4bf;
+    --accent-fg: #042f2e;
+    --error: #f87171;
+    --ok: #34d399;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font:
+    15px/1.5 system-ui,
+    sans-serif;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 24px;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0 0 20px;
+  padding: 16px;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 6px;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+label.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal;
+}
+
+input[type='text'],
+input[type='url'],
+input[type='password'],
+input[type='number'] {
+  width: 100%;
+  margin-top: 4px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+input[type='number'] {
+  width: 8em;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.row input {
+  flex: 1;
+}
+
+.help {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 4px 0 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.errors {
+  color: var(--error);
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+
+.errors:empty {
+  display: none;
+}
+
+.status {
+  min-height: 1.5em;
+  text-align: right;
+}
+
+.status.error {
+  color: var(--error);
+}
+
+.status.ok {
+  color: var(--ok);
+}

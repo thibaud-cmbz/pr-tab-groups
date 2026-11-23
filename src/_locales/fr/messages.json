@@ -80,5 +80,77 @@
   },
   "errorUnexpected": {
     "message": "Erreur inattendue. Consultez la console du navigateur."
+  },
+  "optionsTitle": {
+    "message": "PR Tab Groups — Options"
+  },
+  "optionsSectionGitHub": {
+    "message": "GitHub"
+  },
+  "optionsTokenLabel": {
+    "message": "Token d’accès personnel"
+  },
+  "optionsTokenPlaceholder": {
+    "message": "Collez votre token"
+  },
+  "optionsTokenSaved": {
+    "message": "Token enregistré — laissez vide pour le conserver"
+  },
+  "optionsForgetToken": {
+    "message": "Oublier"
+  },
+  "optionsTokenHelp": {
+    "message": "Stocké localement, envoyé uniquement à api.github.com. Un accès en lecture aux pull requests suffit :"
+  },
+  "optionsTokenLinkFineGrained": {
+    "message": "créer un token fine-grained"
+  },
+  "optionsTokenLinkClassic": {
+    "message": "créer un token classic"
+  },
+  "optionsOrgLabel": {
+    "message": "Organisation"
+  },
+  "optionsOrgHelp": {
+    "message": "Vos pull requests sont limitées à cette organisation. Laissez vide pour les inclure toutes."
+  },
+  "optionsReviewOrgOnlyLabel": {
+    "message": "Limiter aussi les demandes de review à cette organisation"
+  },
+  "optionsSectionStartup": {
+    "message": "Démarrage"
+  },
+  "optionsPinnedUrlLabel": {
+    "message": "Page fixe"
+  },
+  "optionsPinnedUrlHelp": {
+    "message": "Ouverte au démarrage si elle ne l’est pas déjà. Laissez vide pour désactiver."
+  },
+  "optionsPinTabLabel": {
+    "message": "Épingler la page fixe"
+  },
+  "optionsStartupDelayLabel": {
+    "message": "Délai avant le chargement au démarrage (secondes, 0–30)"
+  },
+  "optionsSave": {
+    "message": "Enregistrer"
+  },
+  "optionsSaveAndRun": {
+    "message": "Enregistrer et lancer"
+  },
+  "optionsSaved": {
+    "message": "Options enregistrées."
+  },
+  "optionsRunning": {
+    "message": "Chargement des pull requests…"
+  },
+  "optionsDone": {
+    "message": "Groupes d’onglets mis à jour."
+  },
+  "optionsErrorOrg": {
+    "message": "Le nom d’organisation n’est pas un identifiant GitHub valide."
+  },
+  "optionsErrorPinnedUrl": {
+    "message": "La page fixe doit être une URL http(s)."
   }
 }

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="optionsTitle">PR Tab Groups</title>
+    <link rel="stylesheet" href="options.css" />
+    <script type="module" src="options.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1 data-i18n="optionsTitle">PR Tab Groups</h1>
+
+      <form id="options-form" novalidate>
+        <fieldset>
+          <legend data-i18n="optionsSectionGitHub">GitHub</legend>
+
+          <label for="token" data-i18n="optionsTokenLabel">Personal access token</label>
+          <div class="row">
+            <input id="token" name="token" type="password" autocomplete="off" spellcheck="false" />
+            <button id="forget-token" type="button" data-i18n="optionsForgetToken">Forget</button>
+          </div>
+          <p class="help">
+            <span data-i18n="optionsTokenHelp"></span>
+            <a
+              href="https://github.com/settings/personal-access-tokens/new"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="optionsTokenLinkFineGrained"
+            ></a>
+            ·
+            <a
+              href="https://github.com/settings/tokens/new?scopes=repo&amp;description=PR%20Tab%20Groups"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="optionsTokenLinkClassic"
+            ></a>
+          </p>
+
+          <label for="org" data-i18n="optionsOrgLabel">Organization</label>
+          <input id="org" name="org" type="text" autocomplete="off" spellcheck="false" />
+          <p class="help" data-i18n="optionsOrgHelp"></p>
+
+          <label class="checkbox">
+            <input id="reviewOrgOnly" name="reviewOrgOnly" type="checkbox" />
+            <span data-i18n="optionsReviewOrgOnlyLabel"></span>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend data-i18n="optionsSectionStartup">Startup</legend>
+
+          <label for="pinnedUrl" data-i18n="optionsPinnedUrlLabel">Fixed page</label>
+          <input
+            id="pinnedUrl"
+            name="pinnedUrl"
+            type="url"
+            placeholder="https://"
+            spellcheck="false"
+          />
+          <p class="help" data-i18n="optionsPinnedUrlHelp"></p>
+
+          <label class="checkbox">
+            <input id="pinTab" name="pinTab" type="checkbox" />
+            <span data-i18n="optionsPinTabLabel"></span>
+          </label>
+
+          <label for="startupDelaySeconds" data-i18n="optionsStartupDelayLabel"></label>
+          <input
+            id="startupDelaySeconds"
+            name="startupDelaySeconds"
+            type="number"
+            min="0"
+            max="30"
+            step="1"
+          />
+        </fieldset>
+
+        <ul id="errors" class="errors" role="alert"></ul>
+
+        <div class="actions">
+          <button id="save" type="submit" data-i18n="optionsSave">Save</button>
+          <button id="save-and-run" type="button" class="primary" data-i18n="optionsSaveAndRun">
+            Save and run
+          </button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+  </body>
+</html>
