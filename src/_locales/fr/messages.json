@@ -1,0 +1,32 @@
+{
+  "extensionName": {
+    "message": "PR Tab Groups"
+  },
+  "extensionDescription": {
+    "message": "Ouvre vos pull requests GitHub dans des groupes d’onglets repliés au démarrage de Firefox."
+  },
+  "actionTitle": {
+    "message": "Rafraîchir les groupes de pull requests"
+  },
+  "actionTitleLoading": {
+    "message": "Chargement des pull requests…"
+  },
+  "actionTitleError": {
+    "message": "PR Tab Groups — $ERROR$",
+    "placeholders": {
+      "error": { "content": "$1" }
+    }
+  },
+  "groupMine": {
+    "message": "Mes PR ($COUNT$)",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "groupReview": {
+    "message": "À reviewer ($COUNT$)",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  }
+}

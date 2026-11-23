@@ -1,0 +1,39 @@
+{
+  "extensionName": {
+    "message": "PR Tab Groups",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Opens your GitHub pull requests in collapsed tab groups when Firefox starts.",
+    "description": "Description of the extension."
+  },
+  "actionTitle": {
+    "message": "Refresh pull request tab groups",
+    "description": "Toolbar button tooltip when idle."
+  },
+  "actionTitleLoading": {
+    "message": "Loading pull requests…",
+    "description": "Toolbar button tooltip while a refresh is running."
+  },
+  "actionTitleError": {
+    "message": "PR Tab Groups — $ERROR$",
+    "description": "Toolbar button tooltip after a failed refresh.",
+    "placeholders": {
+      "error": { "content": "$1", "example": "The GitHub token is invalid or expired." }
+    }
+  },
+  "groupMine": {
+    "message": "My PRs ($COUNT$)",
+    "description": "Title of the tab group holding pull requests authored by the user.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "4" }
+    }
+  },
+  "groupReview": {
+    "message": "To review ($COUNT$)",
+    "description": "Title of the tab group holding pull requests awaiting the user's review.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "2" }
+    }
+  }
+}
