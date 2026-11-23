@@ -1,0 +1,8 @@
+node_modules/
+web-ext-artifacts/
+coverage/
+.amo-upload-uuid
+.env
+.env.*
+*.log
+.DS_Store

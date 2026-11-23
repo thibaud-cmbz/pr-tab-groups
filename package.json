@@ -1,0 +1,46 @@
+{
+  "name": "pr-tab-groups",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox extension that opens your GitHub pull requests in collapsed tab groups at startup.",
+  "license": "MIT",
+  "author": "Thibaud",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "lint": "eslint . && prettier --check . && web-ext lint",
+    "lint:ext": "web-ext lint",
+    "format": "prettier --write . && eslint --fix .",
+    "typecheck": "tsc -p jsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "start": "web-ext run",
+    "build": "web-ext build",
+    "sign": "web-ext sign --channel=unlisted"
+  },
+  "webExt": {
+    "sourceDir": "src",
+    "artifactsDir": "web-ext-artifacts",
+    "build": {
+      "overwriteDest": true
+    },
+    "run": {
+      "startUrl": [
+        "about:debugging#/runtime/this-firefox"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/firefox-webext-browser": "^143.0.1",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1",
+    "web-ext": "^10.8.0"
+  }
+}
